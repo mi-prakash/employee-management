@@ -60,4 +60,44 @@ class User extends Authenticatable implements PasskeyUser
             'two_factor_confirmed_at' => 'datetime',
         ];
     }
+
+    /**
+     * Determine whether the user has the given application role.
+     */
+    public function hasRole(UserRole $role): bool
+    {
+        return $this->role === $role;
+    }
+
+    /**
+     * Determine whether the user is a super administrator.
+     */
+    public function isSuperAdmin(): bool
+    {
+        return $this->hasRole(UserRole::SuperAdmin);
+    }
+
+    /**
+     * Determine whether the user is an administrator.
+     */
+    public function isAdmin(): bool
+    {
+        return $this->hasRole(UserRole::Admin);
+    }
+
+    /**
+     * Determine whether the user has administrative access.
+     */
+    public function isAdministrator(): bool
+    {
+        return $this->role->isAdministrator();
+    }
+
+    /**
+     * Determine whether the user is a standard employee.
+     */
+    public function isEmployee(): bool
+    {
+        return $this->hasRole(UserRole::Employee);
+    }
 }
