@@ -10,11 +10,7 @@ trait RedirectsToCurrentTeam
 {
     protected function redirectPathForCurrentTeam(Request $request, string $redirect): string
     {
-        $team = $this->currentTeam($request);
-
-        URL::defaults(['current_team' => $team->slug]);
-
-        return "/{$team->slug}{$redirect}";
+        return $redirect;
     }
 
     protected function currentTeam(Request $request): Team
