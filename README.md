@@ -70,15 +70,3 @@ The application will now be available at:
 ```
 http://127.0.0.1:8000
 ```
-
-## Running Tests
-
-```bash
-php artisan test
-```
-
-## Code Style
-
-```bash
-php artisan pint
-```
